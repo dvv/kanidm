@@ -3062,7 +3062,7 @@ pub(crate) fn route_setup(state: ServerState) -> Router<ServerState> {
                 .post(person_id_radius_post)
                 .delete(person_id_radius_delete),
         )
-        .route("/v1/person/:id/_unix", post(service_account_id_unix_post))
+        .route("/v1/person/:id/_unix", post(person_id_unix_post))
         .route(
             "/v1/person/:id/_unix/_credential",
             put(person_id_unix_credential_put).delete(person_id_unix_credential_delete),
