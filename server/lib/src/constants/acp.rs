@@ -1133,6 +1133,7 @@ lazy_static! {
             Attribute::UserAuthTokenSession,
             Attribute::PassKeys,
             Attribute::AttestedPasskeys,
+            Attribute::Props,
         ],
         ..Default::default()
     };
@@ -1160,6 +1161,7 @@ lazy_static! {
             Attribute::PassKeys,
             Attribute::AttestedPasskeys,
             Attribute::UserAuthTokenSession,
+            Attribute::Props,
         ],
         modify_present_attrs: vec![
             Attribute::DisplayName,
@@ -1170,6 +1172,7 @@ lazy_static! {
             Attribute::UnixPassword,
             Attribute::PassKeys,
             Attribute::AttestedPasskeys,
+            Attribute::Props,
         ],
         ..Default::default()
     };
@@ -1447,6 +1450,7 @@ lazy_static! {
             Attribute::Member,
             Attribute::DynMember,
             Attribute::EntryManagedBy,
+            Attribute::Props,
         ],
         create_attrs: vec![
             Attribute::Class,
@@ -1455,6 +1459,7 @@ lazy_static! {
             Attribute::Description,
             Attribute::Member,
             Attribute::EntryManagedBy,
+            Attribute::Props,
         ],
         create_classes: vec![
             EntryClass::Object,
@@ -1464,11 +1469,13 @@ lazy_static! {
             Attribute::Name,
             Attribute::Description,
             Attribute::Member,
+            Attribute::Props,
         ],
         modify_removed_attrs: vec![
             Attribute::Name,
             Attribute::Description,
             Attribute::Member,
+            Attribute::Props,
         ],
         ..Default::default()
     };
@@ -1600,12 +1607,14 @@ lazy_static! {
             Attribute::DisplayName,
             Attribute::LegalName,
             Attribute::Mail,
+            Attribute::Props,
         ],
         modify_present_attrs: vec![
             Attribute::Name,
             Attribute::DisplayName,
             Attribute::LegalName,
             Attribute::Mail,
+            Attribute::Props,
         ],
         ..Default::default()
     };
@@ -1671,6 +1680,7 @@ lazy_static! {
             Attribute::Mail,
             Attribute::AccountExpire,
             Attribute::AccountValidFrom,
+            Attribute::Props,
         ],
         create_classes: vec![EntryClass::Object, EntryClass::Account, EntryClass::Person,],
         ..Default::default()
@@ -1730,6 +1740,7 @@ lazy_static! {
             Attribute::Uuid,
             Attribute::AccountExpire,
             Attribute::AccountValidFrom,
+            Attribute::Props,
         ],
         ..Default::default()
     };

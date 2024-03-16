@@ -872,6 +872,9 @@ impl<'a> QueryServerWriteTransaction<'a> {
         let idm_schema_classes = [
             SCHEMA_ATTR_LIMIT_SEARCH_MAX_RESULTS_DL6.clone().into(),
             SCHEMA_ATTR_LIMIT_SEARCH_MAX_FILTER_TEST_DL6.clone().into(),
+            SCHEMA_ATTR_PROPS.clone().into(),
+            SCHEMA_CLASS_GROUP.clone().into(),
+            SCHEMA_CLASS_ACCOUNT.clone().into(),
             SCHEMA_CLASS_ACCOUNT_POLICY_DL6.clone().into(),
             SCHEMA_CLASS_SERVICE_ACCOUNT_DL6.clone().into(),
         ];
@@ -893,6 +896,12 @@ impl<'a> QueryServerWriteTransaction<'a> {
             IDM_ACP_GROUP_MANAGE_DL6.clone().into(),
             // Update anonymous with the correct entry manager,
             BUILTIN_ACCOUNT_ANONYMOUS_DL6.clone().into(),
+            IDM_ACP_SELF_READ_V1.clone().into(),
+            IDM_ACP_SELF_WRITE_V1.clone().into(),
+            IDM_ACP_PEOPLE_READ_V1.clone().into(),
+            IDM_ACP_PEOPLE_MANAGE_V1.clone().into(),
+            IDM_ACP_PEOPLE_PII_MANAGE_V1.clone().into(),
+            IDM_ACP_SERVICE_ACCOUNT_CREATE_V1.clone().into(),
         ];
         self.reload()?;
 
@@ -1108,6 +1117,7 @@ impl<'a> QueryServerWriteTransaction<'a> {
             SCHEMA_ATTR_PASSKEYS.clone().into(),
             SCHEMA_ATTR_PRIMARY_CREDENTIAL.clone().into(),
             SCHEMA_ATTR_PRIVATE_COOKIE_KEY.clone().into(),
+            SCHEMA_ATTR_PROPS.clone().into(),
             SCHEMA_ATTR_RADIUS_SECRET.clone().into(),
             SCHEMA_ATTR_RS256_PRIVATE_KEY_DER.clone().into(),
             SCHEMA_ATTR_SSH_PUBLICKEY.clone().into(),

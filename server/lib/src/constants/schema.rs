@@ -638,6 +638,15 @@ pub static ref SCHEMA_ATTR_LIMIT_SEARCH_MAX_FILTER_TEST_DL6: SchemaAttribute = S
     ..Default::default()
 };
 
+pub static ref SCHEMA_ATTR_PROPS: SchemaAttribute = SchemaAttribute {
+    uuid: UUID_SCHEMA_ATTR_PROPS,
+    name: Attribute::Props.into(),
+    description: "Custom properties of this object".to_string(),
+    sync_allowed: true,
+    syntax: SyntaxType::Utf8String,
+    ..Default::default()
+};
+
 // === classes ===
 
 pub static ref SCHEMA_CLASS_PERSON: SchemaClass = SchemaClass {
@@ -675,6 +684,7 @@ pub static ref SCHEMA_CLASS_PERSON_DL5: SchemaClass = SchemaClass {
         Attribute::OAuth2Session.into(),
         Attribute::Mail.into(),
         Attribute::LegalName.into(),
+        Attribute::Props.into(),
     ],
     systemmust: vec![
         Attribute::IdVerificationEcKey.into()
@@ -708,7 +718,8 @@ pub static ref SCHEMA_CLASS_GROUP: SchemaClass = SchemaClass {
     systemmay: vec![
         Attribute::Member.into(),
         Attribute::GrantUiHint.into(),
-        Attribute::Description.into()
+        Attribute::Description.into(),
+        Attribute::Props.into(),
     ],
     systemmust: vec![
         Attribute::Name.into(),
@@ -756,6 +767,7 @@ pub static ref SCHEMA_CLASS_ACCOUNT_POLICY_DL6: SchemaClass = SchemaClass {
         Attribute::WebauthnAttestationCaList.into(),
         Attribute::LimitSearchMaxResults.into(),
         Attribute::LimitSearchMaxFilterTest.into(),
+        Attribute::Props.into(),
     ],
     systemsupplements: vec![Attribute::Group.into()],
     ..Default::default()
@@ -782,6 +794,7 @@ pub static ref SCHEMA_CLASS_ACCOUNT: SchemaClass = SchemaClass {
         Attribute::OAuth2Session.into(),
         Attribute::Description.into(),
         Attribute::NameHistory.into(),
+        Attribute::Props.into(),
     ],
     systemmust: vec![
             Attribute::DisplayName.into(),
@@ -873,6 +886,7 @@ pub static ref SCHEMA_CLASS_SERVICE_ACCOUNT_DL6: SchemaClass = SchemaClass {
         Attribute::PrimaryCredential.into(),
         Attribute::JwsEs256PrivateKey.into(),
         Attribute::ApiTokenSession.into(),
+        Attribute::Props.into(),
     ],
     systemexcludes: vec![EntryClass::Person.into()],
     ..Default::default()
