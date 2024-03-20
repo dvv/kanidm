@@ -195,7 +195,7 @@ pub async fn whoami_uat(
 }
 
 #[utoipa::path(
-    post,
+    get,
     path = "/v1/logout",
     responses(
         DefaultApiResponse,
@@ -1415,7 +1415,7 @@ pub async fn service_account_id_credential_status_get(
 }
 
 #[utoipa::path(
-    delete,
+    get,
     path = "/v1/person/{id}/_credential/_status",
     responses(
         (status=200), // TODO: define response
@@ -1877,7 +1877,7 @@ async fn person_id_radius_handler(
 #[utoipa::path(
     post,
     path = "/v1/person/{id}/_unix",
-    request_body=Jaon<AccountUnixExtend>,
+    request_body=AccountUnixExtend,
     responses(
         DefaultApiResponse,
     ),
@@ -2022,7 +2022,7 @@ pub async fn account_id_unix_auth_post(
 }
 
 #[utoipa::path(
-    post,
+    put,
     path = "/v1/person/{id}/_unix/_credential",
     request_body = SingleStringRequest,
     responses(
@@ -2304,7 +2304,7 @@ pub async fn group_id_attr_put(
 }
 
 #[utoipa::path(
-    put,
+    post,
     path = "/v1/group/{id}/_unix",
     request_body = GroupUnixExtend,
     responses(
@@ -2312,7 +2312,7 @@ pub async fn group_id_attr_put(
     ),
     security(("token_jwt" = [])),
     tag = "v1/group/unix",
-    operation_id = "group_id_unix_put",
+    operation_id = "group_id_unix_post",
 )]
 pub async fn group_id_unix_post(
     State(state): State<ServerState>,
