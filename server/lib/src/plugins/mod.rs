@@ -11,6 +11,7 @@ use crate::event::{CreateEvent, DeleteEvent, ModifyEvent};
 use crate::prelude::*;
 
 mod attrunique;
+mod audit;
 mod base;
 mod cred_import;
 mod default_values;
@@ -257,7 +258,8 @@ impl Plugins {
         ce: &CreateEvent,
     ) -> Result<(), OperationError> {
         refint::ReferentialIntegrity::post_create(qs, cand, ce)?;
-        memberof::MemberOf::post_create(qs, cand, ce)
+        memberof::MemberOf::post_create(qs, cand, ce)?;
+        audit::Audit::post_create(qs, cand, ce)
     }
 
     #[instrument(level = "debug", name = "plugins::run_pre_modify", skip_all)]
@@ -292,7 +294,8 @@ impl Plugins {
     ) -> Result<(), OperationError> {
         refint::ReferentialIntegrity::post_modify(qs, pre_cand, cand, me)?;
         spn::Spn::post_modify(qs, pre_cand, cand, me)?;
-        memberof::MemberOf::post_modify(qs, pre_cand, cand, me)
+        memberof::MemberOf::post_modify(qs, pre_cand, cand, me)?;
+        audit::Audit::post_modify(qs, pre_cand, cand, me)
     }
 
     #[instrument(level = "debug", name = "plugins::run_pre_batch_modify", skip_all)]
@@ -327,7 +330,8 @@ impl Plugins {
     ) -> Result<(), OperationError> {
         refint::ReferentialIntegrity::post_batch_modify(qs, pre_cand, cand, me)?;
         spn::Spn::post_batch_modify(qs, pre_cand, cand, me)?;
-        memberof::MemberOf::post_batch_modify(qs, pre_cand, cand, me)
+        memberof::MemberOf::post_batch_modify(qs, pre_cand, cand, me)?;
+        audit::Audit::post_batch_modify(qs, pre_cand, cand, me)
     }
 
     #[instrument(level = "debug", name = "plugins::run_pre_delete", skip_all)]
@@ -347,7 +351,8 @@ impl Plugins {
         de: &DeleteEvent,
     ) -> Result<(), OperationError> {
         refint::ReferentialIntegrity::post_delete(qs, cand, de)?;
-        memberof::MemberOf::post_delete(qs, cand, de)
+        memberof::MemberOf::post_delete(qs, cand, de)?;
+        audit::Audit::post_delete(qs, cand, de)
     }
 
     #[instrument(level = "debug", name = "plugins::run_pre_repl_refresh", skip_all)]
